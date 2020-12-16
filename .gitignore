@@ -4,3 +4,5 @@
 *downloader/
 /aoc2020.code-workspace
 /setup.py
+__pycache__/
+/bfg*
