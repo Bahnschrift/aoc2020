@@ -7,3 +7,4 @@
 __pycache__/
 /bfg*
 jupyter/generator.py
+.vscode/
