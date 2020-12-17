@@ -138,3 +138,36 @@ Splits a string at a delimiter, then returns a dictionary of the resulting value
 """
 def str_dict(in_str: str, delim=None, sep: str=":") -> Dict:
     return {x: y for x, y in [field.split(sep, maxsplit=1) for field in in_str.split(delim)]}
+
+
+"""
+Gets the advent of code input for a given day in a given year and checks if it is cached at the specified path. If not, then it grabs it from the website.
+"""
+def get_aoc_input(day: int, path: str, format: str="lines", year=2020) -> Union[str, list]:
+    if format not in ("lines", "string"):
+        raise LookupError("Format must be either 'lines' or 'string'")
+    
+    import requests
+    
+    file = open(path, "r+")
+    contents = file.read()
+    if contents == "":
+        url = f"https://adventofcode.com/{year}/day/{day}/input"
+        id_file = open("../downloader/session_id.txt", "r")
+        id = id_file.read().strip()
+        id_file.close()
+        cookies = {
+            "session": id
+        }
+        r = requests.post(url, cookies=cookies, allow_redirects=True)
+        file.write(r.text)
+        
+    file.close()
+    file = open(path, "r")
+    data = ""
+    if format == "lines":
+        data = [*map(str.rstrip, file.readlines())]
+    elif format == "string":
+        data = file.read().rstrip()
+    file.close()
+    return data
