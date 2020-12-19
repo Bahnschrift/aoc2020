@@ -171,3 +171,6 @@ def get_aoc_input(day: int, path: str, format: str="lines", year=2020) -> Union[
         data = file.read().rstrip()
     file.close()
     return data
+
+def yeet(*args):
+    print("Yeet:", *args)
