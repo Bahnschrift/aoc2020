@@ -69,7 +69,7 @@ Takes a two dimensional grid, and returns the grid "rotated" 90degs clockwise, i
     [3, 6, None, 11]
 ]
 """
-def as_cols(grid: Iterable[Iterable[Any]], pad_value: Any=None) -> List[Iterable[Any]]:
+def as_cols(grid: Iterable[Iterable[Any]], pad_value: Any=None) -> List[List[Any]]:
     grid = pad_grid(grid, pad_value=pad_value)
     return [list(x) for x in zip(*grid)]
 
