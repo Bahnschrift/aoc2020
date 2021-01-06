@@ -174,3 +174,14 @@ def get_aoc_input(day: int, path: str, format: str="lines", year=2020) -> Union[
 
 def yeet(*args):
     print("Yeet:", *args)
+
+
+"""
+Returns a list of tuples formed pairwise from an iterable. e.g.
+[1, 2, 3, 4, 5] (size = 2) -> [(1, 2), (2, 3), (3, 4), (4, 5)]
+[1, 2, 3, 4, 5] (size = 3) -> [[(1, 2, 3), (2, 3, 4), (3, 4, 5)]
+"""
+def pairwise(arr: Union[str, List, Tuple], size: int=2) -> List[Tuple]:
+    return [*zip(*[arr[x:x-size+1] for x in range(size - 1)], arr[size-1:])]
+
+print(pairwise([1, 2, 3, 4, 5], size=3))
