@@ -183,5 +183,3 @@ Returns a list of tuples formed pairwise from an iterable. e.g.
 """
 def pairwise(arr: Union[str, List, Tuple], size: int=2) -> List[Tuple]:
     return [*zip(*[arr[x:x-size+1] for x in range(size - 1)], arr[size-1:])]
-
-print(pairwise([1, 2, 3, 4, 5], size=3))
